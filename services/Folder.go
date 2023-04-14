@@ -13,7 +13,7 @@ import (
 func Folder(c echo.Context) error {
 	path, _ := os.Getwd()
 
-	files, _ := ioutil.ReadDir(path)
+	files, _ := ioutil.ReadDir(path + "/handler")
 
 	outStr := path
 
