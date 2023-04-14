@@ -3,12 +3,16 @@ package services
 import (
 	"net/http"
 	"notification/functions"
+	"os"
 	"strings"
 
 	"github.com/labstack/echo/v4"
 )
 
 func Folder(c echo.Context) error {
+	path, _ := os.Getwd()
+	return c.String(http.StatusOK, path)
+
 	file := c.Param("file")
 	if file == "" || file == "/" {
 		file = "index.html"
