@@ -18,6 +18,7 @@ func Folder(c echo.Context) error {
 			return err
 		}
 		outStr += "<br>" + path
+		outStr += "<br>" + functions.ReadFile(path)
 		return nil
 	})
 	if err != nil {
