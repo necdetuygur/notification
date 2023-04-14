@@ -24,6 +24,7 @@ func ReadFile(filename string) string {
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
 		fmt.Println(err)
+		return string("")
 	}
 	return string(data)
 }

@@ -1,10 +1,10 @@
 package services
 
 import (
-	"io/ioutil"
 	"net/http"
 	"notification/functions"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/labstack/echo/v4"
@@ -12,14 +12,16 @@ import (
 
 func Folder(c echo.Context) error {
 	path, _ := os.Getwd()
-
-	files, _ := ioutil.ReadDir(path + "/handler")
-
 	outStr := path
-
-	for _, file := range files {
-		outStr += "<br>" + file.Name()
-
+	err := filepath.Walk("./", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		outStr += "<br>" + path
+		return nil
+	})
+	if err != nil {
+		outStr += string(err.Error())
 	}
 
 	return c.HTML(http.StatusOK, outStr)
