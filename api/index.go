@@ -17,7 +17,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		AllowOrigins: []string{"*"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
+
 	e.GET("/", services.PublicFolder)
+	e.GET("/home", services.PublicFolder)
+
 	e.GET("/send", services.Send)
+
 	e.ServeHTTP(w, r)
 }
