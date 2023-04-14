@@ -1,6 +1,7 @@
 package services
 
 import (
+	"io/ioutil"
 	"net/http"
 	"notification/functions"
 	"os"
@@ -11,7 +12,17 @@ import (
 
 func Folder(c echo.Context) error {
 	path, _ := os.Getwd()
-	return c.String(http.StatusOK, path)
+
+	files, _ := ioutil.ReadDir(path)
+
+	outStr := path
+
+	for _, file := range files {
+		outStr += "<br>" + file.Name()
+
+	}
+
+	return c.HTML(http.StatusOK, outStr)
 
 	file := c.Param("file")
 	if file == "" || file == "/" {
