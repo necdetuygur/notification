@@ -122,8 +122,8 @@ func Minifier(a string) string {
 		a = regexp.MustCompile(`(?ms)<!--.*?-->`).ReplaceAllString(a, ` `)
 		a = regexp.MustCompile(`  `).ReplaceAllString(a, ` `)
 		a = regexp.MustCompile(`\t`).ReplaceAllString(a, ` `)
-		// a = regexp.MustCompile(`\n`).ReplaceAllString(a, ` `)
-		// a = regexp.MustCompile(`\r`).ReplaceAllString(a, ` `)
+		a = regexp.MustCompile(`\n`).ReplaceAllString(a, ` `)
+		a = regexp.MustCompile(`\r`).ReplaceAllString(a, ` `)
 		i--
 	}
 	return a

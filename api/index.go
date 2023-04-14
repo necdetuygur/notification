@@ -19,8 +19,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}))
 
 	e.GET("/", services.Folder)
-	e.GET("/home", services.Folder)
-
+	e.GET("/:file", services.Folder)
 	e.GET("/send", services.Send)
 
 	e.ServeHTTP(w, r)

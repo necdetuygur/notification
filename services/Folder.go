@@ -52,7 +52,7 @@ func Folder(c echo.Context) error {
 	// 		strings.Contains(file, ".js") ||
 	// 		strings.Contains(file, ".css") ||
 	// 		strings.Contains(file, ".json") {
-	// 		fileContent = functions.Minifier(fileContent)
+	fileContent = functions.Minifier(fileContent)
 	// 	}
 	// }
 	c.Response().Header().Set("cache-control", "public,max-age=31536000,immutable")
