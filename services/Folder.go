@@ -13,7 +13,7 @@ import (
 func Folder(c echo.Context) error {
 	path, _ := os.Getwd()
 	outStr := path
-	err := filepath.Walk("./", func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk("../", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
