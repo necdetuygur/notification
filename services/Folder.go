@@ -3,30 +3,12 @@ package services
 import (
 	"net/http"
 	"notification/functions"
-	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/labstack/echo/v4"
 )
 
 func Folder(c echo.Context) error {
-	path, _ := os.Getwd()
-	outStr := path
-	err := filepath.Walk("./", func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		outStr += "<br>" + path
-		outStr += "<br>" + functions.ReadFile(path)
-		return nil
-	})
-	if err != nil {
-		outStr += string(err.Error())
-	}
-
-	return c.HTML(http.StatusOK, outStr)
-
 	file := c.Param("file")
 	if file == "" || file == "/" {
 		file = "index.html"
