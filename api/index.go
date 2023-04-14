@@ -18,8 +18,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 
-	e.GET("/", services.PublicFolder)
-	e.GET("/home", services.PublicFolder)
+	e.GET("/", services.Folder)
+	e.GET("/home", services.Folder)
 
 	e.GET("/send", services.Send)
 

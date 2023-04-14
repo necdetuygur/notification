@@ -8,7 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func PublicFolder(c echo.Context) error {
+func Folder(c echo.Context) error {
 	file := c.Param("file")
 	if file == "" || file == "/" {
 		file = "index.html"
@@ -43,7 +43,7 @@ func PublicFolder(c echo.Context) error {
 	// }
 	/**/
 
-	fullPath := strings.ReplaceAll(("./public/" + file), "//", "/")
+	fullPath := strings.ReplaceAll(("./docs/" + file), "//", "/")
 	// functions.Pr("fullPath ::::::::::: ----> " + fullPath)
 	fileContent := functions.ReadFile(fullPath)
 	// for k, v := range config.ALL {
